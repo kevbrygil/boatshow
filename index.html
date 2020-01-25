@@ -737,7 +737,16 @@ Price
                 <div class="form">
         		   <!-- Form itself -->
                   <form name="sentMessage" class="well" id="contactForm"
-                  action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScwpeTOMHZ7hVBs19AP5TSTLb95Uv3atSU2co_F_fl1yJcRRA/formResponse" novalidate>
+                  action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScwpeTOMHZ7hVBs19AP5TSTLb95Uv3atSU2co_F_fl1yJcRRA/formResponse?"
+                  onsubmit="
+						var form_url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScwpeTOMHZ7hVBs19AP5TSTLb95Uv3atSU2co_F_fl1yJcRRA/formResponse?';
+						form_url+= 'entry.2005620554=' + document.getElementById('name').value;
+						form_url+= '&entry.1045781291=' + document.getElementById('email').value;
+						form_url+= '&entry.585794070=' + document.getElementById('subject').value;
+                        form_url+= '&entry.839337160=' + document.getElementById('message').value;
+						window.open(form_url, '_blank');
+						return false;"
+                  novalidate>
                     <div class="control-group">
                         <div class="form-group">
                             <input type="text" class="form-control"
