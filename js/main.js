@@ -1,5 +1,35 @@
 jQuery(document).ready(function($) {
- 
+
+    var get_html_pic = function(file_name, description){
+        return '<div class="col-lg-3 col-md-4">'+
+            '<div class="portfolio-item wow fadeInUp">'+
+              '<a href="'+file_name+'" class="portfolio-popup">'+
+                '<img src="'+file_name+'" alt="">'+
+                '<div class="portfolio-overlay">'+
+                  '<div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>'+
+                '</div>'+
+              '</a>'+
+            '</div>'+
+            '</div>';
+    };
+
+    gallery_files_names.map(function(file,index,ar) {
+        $('#gallery').append(get_html_pic(file.url,file.description));
+    });
+
+    sponsers_files_names.map(function(file,index,ar) {
+        $('#sponsers').append('<img src="'+file.url+'" alt="">');
+    });
+
+    companies_names.map(function(column,index,ar) {
+        var html_company = '<div class="col-6 col-md-4"><ul>';
+        column.map(function(company,index,ar) {
+            html_company += '<li><i class="icon ion-ios-checkmark-outline"></i>'+company.name+'</li>';
+        });
+        html_company += '</ul></div>';
+        $('#companies').append(html_company);
+    });
+
     $(window).scroll(function() {
         if ($(this).scrollTop() > 100) {
             $('.back-to-top').fadeIn('slow');
@@ -13,12 +43,12 @@ jQuery(document).ready(function($) {
         }, 1500, 'easeInOutExpo');
         return false;
     });
- 
+
     $("#header").sticky({
         topSpacing: 0,
         zIndex: '50'
     });
- 
+
     $("#intro-carousel").owlCarousel({
         autoplay: true,
         dots: false,
@@ -26,16 +56,16 @@ jQuery(document).ready(function($) {
         animateOut: 'fadeOut',
         items: 1
     });
- 
+
     new WOW().init();
- 
+
     $('.nav-menu').superfish({
         animation: {
             opacity: 'show'
         },
         speed: 400
     });
- 
+
     if ($('#nav-menu-container').length) {
         var $mobile_nav = $('#nav-menu-container').clone().prop({
             id: 'mobile-nav'
@@ -74,7 +104,7 @@ jQuery(document).ready(function($) {
     } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
         $("#mobile-nav, #mobile-nav-toggle").hide();
     }
- 
+
     $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
@@ -108,7 +138,7 @@ jQuery(document).ready(function($) {
         }
     });
 
- 
+
     $('.portfolio-popup').magnificPopup({
         type: 'image',
         removalDelay: 300,
@@ -125,7 +155,7 @@ jQuery(document).ready(function($) {
             }
         }
     });
- 
+
     $(".testimonials-carousel").owlCarousel({
         autoplay: true,
         dots: true,
@@ -142,7 +172,7 @@ jQuery(document).ready(function($) {
             }
         }
     });
- 
+
     $(".clients-carousel").owlCarousel({
         autoplay: true,
         dots: true,
@@ -159,6 +189,5 @@ jQuery(document).ready(function($) {
             }
         }
     });
-
 
 });
