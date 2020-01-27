@@ -176,6 +176,12 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
 }
 
+@media (max-width: 600px) {
+  #intro {
+    background: url("../img/intro-carousel/intro-movil.png") no-repeat;
+  }
+}
+
 #intro .intro-content {
   position: absolute;
   bottom: 0;
@@ -618,10 +624,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #visitors .visitors-img {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   overflow: hidden;
 }
 #visitors .visitors-img img {
-  margin-top: -15px;
+  /* margin-top: -15px; */
   width: 98%;
 }
 
